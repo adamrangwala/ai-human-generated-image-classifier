@@ -59,7 +59,6 @@ The model analyzes visual patterns that may not be obvious to the human eye.
 """)
 
 # Function to load the model
-@st.cache_resource
 def load_model(model):
     """Load the pre-trained Keras model"""
     if model is not None:
@@ -94,14 +93,14 @@ def predict_image(model, img_array):
 # Main function
 def main():
     # Load model
-    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=None, key="model")
+    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5"], key="model")
     model = load_model(uploaded_model)
     
     if model is None:
         st.warning("⚠️ Model could not be loaded. Please check your configuration.")
         return
     else: 
-        target_size = model.input_shape[1:2]
+        target_size = model.input_shape[1:3]
     
     # Image upload
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
