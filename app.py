@@ -143,7 +143,7 @@ def main():
             # Add a spinner while processing
             with st.spinner("Analyzing image..."):
                 # Preprocess the image
-                processed_img = preprocess_image(image)
+                processed_img = preprocess_image(image,target_size)
                 
                 # Make prediction
                 probability = predict_image(model, processed_img)
