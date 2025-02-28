@@ -88,6 +88,7 @@ def predict_image(model, img_array):
     """Make prediction using the model"""
     prediction = model.predict(img_array)
     # Binary classification where 0=Human, 1=AI
+    st.write(f"Prediction: {prediction}")
     probability = prediction[0][0]
     return probability
 
@@ -146,7 +147,7 @@ def main():
                 processed_img = preprocess_image(image,target_size)
                 
                 # Make prediction
-                i, probability = predict_image(model, processed_img)
+                probability = predict_image(model, processed_img)
                 
                 # Display result
                 if probability > 0.5:
