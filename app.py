@@ -62,16 +62,15 @@ The model analyzes visual patterns that may not be obvious to the human eye.
 def load_model():
     """Load the pre-trained Keras model"""
     try:
-        # Update this path to where your model is stored
-        model_path = "git-lfs/ai_human_classifier.h5"
-        model = keras.models.load_model(model_path, compile=False)
+        model = st.file_uploader("Upload pre-trained Keras model", type=None, key="model")
+        model = keras.models.load_model(model)
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
         return None
 
 # Function to preprocess the image
-def preprocess_image(image, target_size=(780, 780)):
+def preprocess_image(image, target_size=target_size):
     """Preprocess the image to be compatible with the model"""
     # Resize image
     image = image.resize(target_size)
@@ -95,8 +94,10 @@ def main():
     model = load_model()
     
     if model is None:
-        st.warning("⚠️ Model could not be loaded. Please check your model path or configuration.")
+        st.warning("⚠️ Model could not be loaded. Please check your configuration.")
         return
+    else: 
+        target_size = model.input_shape[1:2]
     
     # Image upload
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
