@@ -63,7 +63,7 @@ def load_model():
     """Load the pre-trained Keras model"""
     try:
         # Update this path to where your model is stored
-        model_path = "model/ai_human_classifier.h5"
+        model_path = "git-lfs/ai_human_classifier.h5"
         model = keras.models.load_model(model_path)
         return model
     except Exception as e:
