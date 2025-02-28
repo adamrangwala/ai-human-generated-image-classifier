@@ -70,7 +70,7 @@ def load_model():
         return None
 
 # Function to preprocess the image
-def preprocess_image(image, target_size=target_size):
+def preprocess_image(image, target_size=(780,780):
     """Preprocess the image to be compatible with the model"""
     # Resize image
     image = image.resize(target_size)
