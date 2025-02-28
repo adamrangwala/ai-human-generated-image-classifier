@@ -64,7 +64,7 @@ def load_model():
     try:
         # Update this path to where your model is stored
         model_path = "git-lfs/ai_human_classifier.h5"
-        model = keras.models.load_model(model_path)
+        model = keras.models.load_model(model_path, compile=False)
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
