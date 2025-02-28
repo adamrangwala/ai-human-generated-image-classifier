@@ -62,7 +62,7 @@ The model analyzes visual patterns that may not be obvious to the human eye.
 def load_model(model):
     """Load the pre-trained Keras model"""
     if model is not None:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".keras") as tmp_file:
             tmp_file.write(model.read())
             model_path = tmp_file.name
             st.write(model_path)
