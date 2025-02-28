@@ -95,7 +95,7 @@ def predict_image(model, img_array):
 # Main function
 def main():
     # Load model
-    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5", key="model")
+    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5"], key="model")
     model = load_model(uploaded_model)
     
     if model is None:
