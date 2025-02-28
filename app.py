@@ -92,7 +92,7 @@ def predict_image(model, img_array):
 # Main function
 def main():
     # Load model
-    model = load_model()
+    model = load_model(model)
     
     if model is None:
         st.warning("⚠️ Model could not be loaded. Please check your configuration.")
