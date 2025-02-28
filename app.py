@@ -1,6 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from tensorflow import keras
+import tempfile
 import numpy as np
 from PIL import Image
 import io
@@ -61,12 +62,13 @@ The model analyzes visual patterns that may not be obvious to the human eye.
 @st.cache_resource
 def load_model(model):
     """Load the pre-trained Keras model"""
-    try:
-        model = keras.models.load_model(model)
-        return model
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        return None
+    if uploaded_model is not None:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
+            tmp_file.write(uploaded_model.read())
+            model_path = tmp_file.name
+
+        model = tf.keras.models.load_model(model_path)
+        st.success("✅ Model loaded successfully!")
 
 # Function to preprocess the image
 def preprocess_image(image, target_size=(780,780)):
