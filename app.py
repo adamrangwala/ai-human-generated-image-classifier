@@ -69,6 +69,7 @@ def load_model(model):
 
         model = tf.keras.models.load_model(model_path)
         st.success("✅ Model loaded successfully!")
+        return model
     else:
         st.warning("Model not found. Try again")
 # Function to preprocess the image
