@@ -65,6 +65,7 @@ def load_model(model):
         with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
             tmp_file.write(model.read())
             model_path = tmp_file.name
+            st.write(model_path)
 
         model = tf.keras.models.load_model(model_path)
         st.success("✅ Model loaded successfully!")
