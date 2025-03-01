@@ -1,6 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from tensorflow import keras
+from tensorflow.keras.applications.resnet import preprocess_input
 import tempfile
 import numpy as np
 from PIL import Image
