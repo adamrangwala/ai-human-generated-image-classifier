@@ -94,6 +94,7 @@ def predict_image(model, img_array):
 
 # Main function
 def main():
+    st.write(f"Keras Version: {(keras.__version__)}"  # Check Keras version
     # Load model
     uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5", "keras"], key="model")
     model = load_model(uploaded_model)
