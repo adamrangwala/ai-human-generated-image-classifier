@@ -66,7 +66,7 @@ def load_model(model):
             tmp_file.write(model.read())
             model_path = tmp_file.name
             
-        model = tf.keras.models.load_model(model_path)
+        model = tf.keras.models.load_model(model_path, safe_mode=False)
         st.success("✅ Model loaded successfully!")
         return model
     else:
