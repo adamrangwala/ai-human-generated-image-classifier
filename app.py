@@ -62,7 +62,7 @@ The model analyzes visual patterns that may not be obvious to the human eye.
 def load_model(model):
     """Load the pre-trained Keras model"""
     if model is not None:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
+        with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
             tmp_file.write(model.read())
             model_path = tmp_file.name
             
@@ -95,7 +95,7 @@ def predict_image(model, img_array):
 # Main function
 def main():
     # Load model
-    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5"], key="model")
+    uploaded_model = st.file_uploader("Upload pre-trained Keras model", type=["h5", "keras"], key="model")
     model = load_model(uploaded_model)
     
     if model is None:
